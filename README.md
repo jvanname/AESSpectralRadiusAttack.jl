@@ -1,6 +1,6 @@
 # AES spectral radii attacks in Julia
 
-This package uses artificial neural networks to compute an approximate eigenvalue that can be used to attempt to break the AES block cipher. The proposed break of the AES block cipher is a mathematical break and not simply a side-channel attack that exploits a faulty implementation.
+This package uses artificial neural networks in Julia to compute an approximate eigenvalue that can be used to attempt to break the AES block cipher. The proposed break of the AES block cipher is a mathematical break and not simply a side-channel attack that exploits a faulty implementation.
 
 This package was forked from a package that implements the Advanced Encryption Standard (AES) cipher in Julia. 
 
