@@ -24,9 +24,16 @@ return b;
 end;
 
 function vectobytearray(x)
-
-bytearray=[];
-
+longn=length(x);
+shortn=Int(longn/8);      
+bytearray=zeros(UInt8,shortn);
+for i in 1:shortn
+            for j in 1:8
+if x[(i-1)*8+j]==1
+                        bytearray[i]+=GaloisFieldBasis[j];
+                  end;
+            end;
+      end;
 end;
 
 function bytearraytovec(x)
