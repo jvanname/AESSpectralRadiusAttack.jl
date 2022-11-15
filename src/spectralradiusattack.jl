@@ -10,7 +10,7 @@ if x&GaloisFieldBasis[i]==0
     else output[i]=1;
     end;
   end;
-
+end;
 
 function bytetovec(x)
 b=0;
@@ -18,4 +18,5 @@ b=0;
                   if x[i]==1
                       b+=GaloisFieldBasis[i];  
                   end;
+end;
 end;
