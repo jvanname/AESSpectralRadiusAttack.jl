@@ -57,4 +57,4 @@ More examples can be found in `test/runtests.jl`.
 
 Feel free to report any bugs as issues on GitHub.
 Pull requests are always welcome.
-
+Feel free to report any results of computation to circcash9192020@protonmail.com so that we may continue to securely encrypt data.
