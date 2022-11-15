@@ -25,9 +25,11 @@ end;
 
 function vectobytearray(x)
 
+bytearray=[];
+
 end;
 
 function bytearraytovec(x)
-      
+return cat(bytetovec.(x))
 end;
 
