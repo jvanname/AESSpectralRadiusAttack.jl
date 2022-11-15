@@ -34,6 +34,7 @@ if x[(i-1)*8+j]==1
                   end;
             end;
       end;
+return bytearray;
 end;
 
 function bytearraytovec(x)
