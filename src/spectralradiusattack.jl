@@ -12,6 +12,10 @@ if x&GaloisFieldBasis[i]==0
   end;
 
 
-function bytetovec()
-
+function bytetovec(x)
+b=0;
+            for i in 1:8
+                  if x[i]==1
+                      b+=GaloisFieldBasis[i];  
+                  end;
 end;
