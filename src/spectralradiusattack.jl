@@ -22,3 +22,12 @@ b=UInt8(0);
 end;
 return b;
 end;
+
+function vectobytearray(x)
+
+end;
+
+function bytearraytovec(x)
+      
+end;
+
