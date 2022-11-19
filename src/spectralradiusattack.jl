@@ -44,3 +44,10 @@ end;
 function MiniMixColumns(z) return [gadd(gmul(z[1],UInt8(3)),gmul(z[2],UInt8(2)),gadd(gmul(z[2],UInt8(3)),gmul(z[1],UInt8(2))]; end;
 
             function SingleMixColumns(z) end;
+
+                  
+function SingleMixColumns(z) return [gadd([gmul(z[1],UInt8(2)),gmul(z[2],UInt8(3)),gmul(z[3],UInt8(1)),gmul(z[4],UInt8(1))]),
+                              gadd([gmul(z[1],UInt8(1)),gmul(z[2],UInt8(2)),gmul(z[3],UInt8(3)),gmul(z[4],UInt8(1))]),
+                              gadd([gmul(z[1],UInt8(1)),gmul(z[2],UInt8(1)),gmul(z[3],UInt8(2)),gmul(z[4],UInt8(3))]),
+                              gadd([gmul(z[1],UInt8(3)),gmul(z[2],UInt8(1)),gmul(z[3],UInt8(1)),gmul(z[4],UInt8(2))])];
+                        end;                  
