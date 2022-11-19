@@ -41,3 +41,6 @@ function bytearraytovec(x)
 return vcat(bytetovec.(x)...)
 end;
 
+function MiniMixColumns(z) return [gadd(gmul(z[1],UInt8(3)),gmul(z[2],UInt8(2)),gadd(gmul(z[2],UInt8(3)),gmul(z[1],UInt8(2))]; end;
+
+            function SingleMixColumns(z) end;
