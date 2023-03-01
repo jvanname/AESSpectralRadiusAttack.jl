@@ -1,7 +1,6 @@
 # AES spectral radii attacks in Julia
 
-This package uses artificial neural networks in Julia to compute an approximate eigenvalue that can be used to attempt to break the AES block cipher. The proposed break of the AES block cipher is a mathematical break and not simply a side-channel attack that exploits a faulty implementation. 
-This package was forked from a package that simply implements the Advanced Encryption Standard (AES) cipher in Julia.  
+This package uses machine learning in Julia to compute an approximate eigenvector that can be used to attempt to break the AES block cipher. The proposed attack of the AES block cipher is a mathematical break and not simply a side-channel attack that exploits a faulty implementation. Since AES is a secure block cipher, neural networks do not seem to be effective at breaking the AES block cipher, but we can still use the LSRDR dimensionality reduction to get a precise measure of security for the AES block cipher. This package was forked from a package that simply implements the Advanced Encryption Standard (AES) cipher in Julia.  
 
 
 
