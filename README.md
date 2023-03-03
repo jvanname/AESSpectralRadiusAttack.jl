@@ -1,5 +1,7 @@
 # AES spectral radii attacks in Julia
 
+All of the innovative material can be found at /jvanname/spectralradiinai, but I am not deleting this package yet.
+
 This package uses machine learning in Julia to compute an LSRDR dimensionality reduction that can be used to attempt to break the AES block cipher. The proposed attack of the AES block cipher is a mathematical break and not simply a side-channel attack that exploits a faulty implementation. Since AES is a secure block cipher, neural networks do not seem to be effective at breaking the AES block cipher, but we can still use the LSRDR dimensionality reduction without neural networks to get a precise measure of security for the AES block cipher. This package was forked from a package that simply implements the Advanced Encryption Standard (AES) cipher in Julia.  
 
 
