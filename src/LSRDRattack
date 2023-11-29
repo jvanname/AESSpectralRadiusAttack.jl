@@ -1,7 +1,37 @@
-# Here, we use the LSRDR dimensionality reduction
+# Here, we use the LSRDR dimensionality reduction and other spectral techniques to evaluate the cryptographic security of the AES block cipher.
 
 using SparseArrays,LinearAlgebra,Statistics
 
+for imk in 1:2
+if imk==1
 table=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); SubBytes(x); for ll in 2:16 x[ll]*=0; end; MixColumns(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(table,perm); end; end;
+else
+table=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; InvMixColumns(x); SubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(table,perm); end; end;
+end;
 
 aa=[]; for tt in table push!(aa,sparse(1:256,tt,ones(256))); end;
+
+n=256;
+m=Int(n*(n-1)/2);
+
+xx=spzeros(m,m); for i in 1:1024 xx+=sparse(1:m,expand(table[i]),ones(m)); end;
+init=randn(m);
+
+display("The following value is a measure of the cryptographic security of the AES block cipher round function. A lower value indicates that the AES block cipher enjoys
+a greater amount of cryptographic security. This measure of security incorporates the four steps of AES round function which are SubBytes,ShiftRows,MixColumns, and AddRoundKey.");
+if imk==0
+display("Testing encryption")
+else 
+display("Testing decryption")
+end;
+display(abs(KrylovKit.eigsolve(xx,init,2,:LM,krylovdim=30)[1][2]));
+end;
+
+# One should get about 45.6864262007241 as the measure of security for the encryption mode.
+# One should get about 33.007272050798576 as the measure of security for the encryption mode.
+# An ideal value for an ideal AES but where the mixcolumns step has a repeated coefficient for this measure of security should be about sqrt(1536)=39.1918358845...
+# or lower for encryption mode.
+# Since the inverse of mixcolumns does not repeat a coefficient, the value of the security for the inverse of mixcolumns is smaller.
+# If the mixcolumns polynomial did not have repeated coefficients, then the ideal value for this measure of security should be about 32.
+
+
