@@ -9,8 +9,10 @@ function expand(list) arm=[]; for i in 1:m push!(arm,Int(mat[list[arr[i][1]],lis
 
 for imk in 1:2
 if imk==1
+# encryption mode
 table=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); SubBytes(x); for ll in 2:16 x[ll]*=0; end; MixColumns(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(table,perm); end; end;
 else
+# decryption mode
 table=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; InvMixColumns(x); SubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(table,perm); end; end;
 end;
 
