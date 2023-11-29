@@ -1,6 +1,6 @@
 # Here, we use the LSRDR dimensionality reduction and other spectral techniques to evaluate the cryptographic security of the AES block cipher.
 
-using SparseArrays,LinearAlgebra,Statistics
+using SparseArrays,LinearAlgebra,Statistics,KrylovKit
 
 n=256;
 m=Int(n*(n-1)/2);
