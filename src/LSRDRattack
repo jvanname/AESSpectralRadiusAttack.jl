@@ -33,7 +33,7 @@ display(abs(KrylovKit.eigsolve(xx,init,2,:LM,krylovdim=30)[1][2]));
 end;
 
 # One should get about 45.6864262007241 as the measure of security for the encryption mode.
-# One should get about 33.007272050798576 as the measure of security for the encryption mode.
+# One should get about 33.597018036942124 as the measure of security for the decryption mode.
 # An ideal value for an ideal AES but where the mixcolumns step has a repeated coefficient for this measure of security should be about sqrt(1536)=39.1918358845...
 # or lower for encryption mode.
 # Since the inverse of mixcolumns does not repeat a coefficient, the value of the security for the inverse of mixcolumns is smaller.
