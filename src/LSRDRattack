@@ -38,5 +38,7 @@ end;
 # or lower for encryption mode.
 # Since the inverse of mixcolumns does not repeat a coefficient, the value of the security for the inverse of mixcolumns is smaller.
 # If the mixcolumns polynomial did not have repeated coefficients, then the ideal value for this measure of security should be about 32.
-#
+# If we replace the Rijndael S-box with a random S-box for encryption mode, then we can get a value of about 58 or so which indicates that the Rijndael S-box is more secure than
+# random S-boxes.
+# 
 
