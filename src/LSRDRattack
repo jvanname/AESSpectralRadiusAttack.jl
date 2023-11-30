@@ -25,9 +25,9 @@ decrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UIn
 # One should get about 33.5970180369421 for unorderedpairsspecrad(encrypttable).
 # The ideal value for unorderedpairsspecrad(encrypttable) should be around 32 or smaller.
 
-# OBSERVATIONS ABOUT THE SECURITY OF AES.
+# OBSERVATIONS ABOUT THE SECURITY OF AES ROUND FUNCTION.
 
-# If we replace the Rijndael S-box with a random S-box for encryption mode, then we can get a value of about 58 or so which indicates that the Rijndael S-box is more secure than
+# If we replace the Rijndael S-box with a random S-box for encryption mode, then we can get a value of about 60 for unorderedpairsspecrad(encrypttable) or so which indicates that the Rijndael S-box is much more secure than
 # random S-boxes.
 
 
