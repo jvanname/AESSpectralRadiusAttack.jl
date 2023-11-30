@@ -2,7 +2,7 @@
 
 using SparseArrays,LinearAlgebra,Statistics,KrylovKit
 
-function unorderedpairsspectad(table)
+function unorderedpairsspecrad(table)
 n=length(table[1]);
 n=256;
 m=Int(n*(n-1)/2);
@@ -18,16 +18,19 @@ encrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UIn
 decrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; InvMixColumns(x); InvSubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(decrypttable,perm); end; end;
 
 
-encrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); SubBytes(x); for ll in 2:16 x[ll]*=0; end; MixColumns(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(encrypttable,perm); end; end;
+# One should get about 45.6864262007241 for unorderedpairsspecrad(encrypttable).
+# The ideal value for unorderedpairsspecrad(encrypttable) should be around 32 or smaller.
+# The ideal value for unorderedpairsspecrad(encrypttable) given that the mixcolumns polynomial repeats a coefficient should be around sqrt(1536)=39.1918358845... or smaller.
 
+# One should get about 33.5970180369421 for unorderedpairsspecrad(encrypttable).
+# The ideal value for unorderedpairsspecrad(encrypttable) should be around 32 or smaller.
 
-# One should get about 45.6864262007241 as the measure of security for the encryption mode.
-# One should get about 33.597018036942124 as the measure of security for the decryption mode.
-# An ideal value for an ideal AES but where the mixcolumns step has a repeated coefficient for this measure of security should be about sqrt(1536)=39.1918358845...
-# or lower for encryption mode.
-# Since the inverse of mixcolumns does not repeat a coefficient, the value of the security for the inverse of mixcolumns is smaller.
-# If the mixcolumns polynomial did not have repeated coefficients, then the ideal value for this measure of security should be about 32.
+# OBSERVATIONS ABOUT THE SECURITY OF AES.
+
 # If we replace the Rijndael S-box with a random S-box for encryption mode, then we can get a value of about 58 or so which indicates that the Rijndael S-box is more secure than
 # random S-boxes.
-# 
+
+
+
+
 
