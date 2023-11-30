@@ -18,6 +18,9 @@ decrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UIn
 
 sboxtable=[]; for i in 1:256 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; SubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[1])));  end; push!(sboxtable,perm); end;
 
+function inv(x) y=gmul(x,x); z=gmul(x,x); for i in 1:6 z=gmul(z,z); y=gmul(y,z); end; return y; end;
+invtable=[]; for i in 1:256 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; SubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[1])));  end; push!(invtable,perm); end;
+
 
 # One should get about 45.6864262007241 for unorderedpairsspecrad(encrypttable).
 # The ideal value for unorderedpairsspecrad(encrypttable) should be around 32 or smaller.
@@ -37,6 +40,10 @@ sboxtable=[]; for i in 1:256 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UIn
 # The value of unorderedpairsspecrad(sboxtable) tends to increase if we multiply the Rijndael S-box with a transposition. This indicates that the
 # Rijndael S-box has been properly optimized for cryptographic security.
 
+# The value of unorderedpairsspecrad(sboxtable) will be around 24 or so if we replace the Rijndael S-box with a random S-box.
+
+# The value of unorderedpairsspecrad(invtable) should be precisely 18. This indicates that invtable satisfies some of the properties that an S-box should satisfy, but
+# invtable is an S-box that can be studied mathematically.
 
 
 
