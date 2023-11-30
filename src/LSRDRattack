@@ -4,10 +4,9 @@ using SparseArrays,LinearAlgebra,Statistics,KrylovKit
 
 function unorderedpairsspecrad(table)
 n=length(table[1]);
-n=256;
 m=Int(n*(n-1)/2);
 function expand(list) arm=[]; for i in 1:m push!(arm,Int(mat[list[arr[i][1]],list[arr[i][2]]])); end; return arm; end;
-xx=spzeros(m,m); for i in 1:1024 xx+=sparse(1:m,expand(table[i]),ones(m)); end;
+xx=spzeros(m,m); for i in 1:length(table) xx+=sparse(1:m,expand(table[i]),ones(m)); end;
 init=randn(m);
 display(abs(KrylovKit.eigsolve(xx,init,2,:LM,krylovdim=30)[1][2]));
 end;
@@ -16,6 +15,8 @@ end;
 encrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); SubBytes(x); for ll in 2:16 x[ll]*=0; end; MixColumns(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(encrypttable,perm); end; end;
 
 decrypttable=[]; for i in 1:256 for j in 1:4 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; InvMixColumns(x); InvSubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[j])));  end; push!(decrypttable,perm); end; end;
+
+sboxtable=[]; for i in 1:256 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UInt8(k-1); for ll in 2:16 x[ll]*=0; end; SubBytes(x); push!(perm,1+Int(gadd(UInt8(i-1),x[1])));  end; push!(sboxtable,perm); end;
 
 
 # One should get about 45.6864262007241 for unorderedpairsspecrad(encrypttable).
