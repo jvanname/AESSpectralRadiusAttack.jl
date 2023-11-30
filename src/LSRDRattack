@@ -5,8 +5,8 @@ using SparseArrays,LinearAlgebra,Statistics,KrylovKit
 function unorderedpairsspecrad(table)
 n=length(table[1]);
 m=Int(n*(n-1)/2);
-mat=zeros(Int64,n,n); for i in 1:length(arr) mat[arr[i][1],arr[i][2]]=i; end; mat+=transpose(mat)
 arr=[]; for i in 1:n for j in i+1:n push!(arr,[i,j]); end; end;
+mat=zeros(Int64,n,n); for i in 1:length(arr) mat[arr[i][1],arr[i][2]]=i; end; mat+=transpose(mat)
 function expand(list) arm=[]; for i in 1:m push!(arm,Int(mat[list[arr[i][1]],list[arr[i][2]]])); end; return arm; end;
 xx=spzeros(m,m); for i in 1:length(table) xx+=sparse(1:m,expand(table[i]),ones(m)); end;
 init=randn(m);
