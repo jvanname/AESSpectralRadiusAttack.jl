@@ -31,6 +31,9 @@ sboxtable=[]; for i in 1:256 perm=[]; for k in 1:256 x=zeros(UInt8,16); x[1]=UIn
 # If we replace the Rijndael S-box with a random S-box for encryption mode, then we can get a value of about 60 for unorderedpairsspecrad(encrypttable) or so which indicates that the Rijndael S-box is much more secure than
 # random S-boxes.
 
+# The value of unorderedpairsspecrad(sboxtable) is 16.41493572768185. An ideal value for unorderedpairsspecrad(sboxtable) should be around or below 16. This indicates that the
+# Rijndael S-box has been properly optimized for cryptographic security.
+
 
 
 
